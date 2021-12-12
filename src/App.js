@@ -4,7 +4,6 @@ import Home from './pages/Home';
 import EventsShow from './pages/EventsShow';
 import EventsRegister from './pages/EventsRegister';
 
-
 function App() {
   return (
     <Routes>
