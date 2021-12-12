@@ -1,17 +1,17 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
-import EventShow from './pages/EventShow';
-import EventRegister from './pages/EventRegister';
+import EventsShow from './pages/EventsShow';
+import EventsRegister from './pages/EventsRegister';
 
 
 function App() {
   return (
-      <Switch>
-        <Route exact path="/events/register" component={ EventRegister } />
-        <Route exact path="/events/:id" component={ EventShow } />
-        <Route exact path="/" component={ Home } />
-      </Switch>
+    <Routes>
+      <Route path="/" element={ <Home /> } />
+        <Route path="events/register" element={ <EventsRegister /> } />
+        <Route path="events/:id" element={ <EventsShow /> } />
+    </Routes>
   );
 }
 
