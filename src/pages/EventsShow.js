@@ -1,11 +1,11 @@
 import React from 'react';
 
-function EventShow() {
+function EventsShow() {
   return (
-    <div className="main-div">
+    <main className="main-div">
       <h1>Olá, sou a page de evento!</h1>
-    </div>
+    </main>
   );
 }
 
-export default EventShow;
+export default EventsShow;

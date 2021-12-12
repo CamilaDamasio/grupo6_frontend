@@ -1,11 +1,13 @@
 import React from 'react';
+import { RegisterEventButton } from '../components';
 
 function Home() {
+
   return (
-    <div className="main-div">
-      <h1>Olá, sou a Home!</h1>    
-    </div>
-  );
+    <main>
+      <RegisterEventButton />
+    </main>
+  )
 }
 
 export default Home;
