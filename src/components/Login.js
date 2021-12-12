@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate }  from 'react-router-dom'
+import api from '../api/api'
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -8,15 +9,16 @@ function Login() {
 
   const navigate = useNavigate();
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
     try {
-      //POST API /login
-      const user = ''
-      if (user) {
-        return navigate('events/register');
+      // const token = await api.post('/login', { email, password });
+      const token = 'aaaa';
+      if (token) {
+        localStorage.setItem('hackaton:token', token);
+        navigate('events/register');
       }
-      return global.alert('Usuário não encontrado')
+      // return global.alert('Usuário não encontrado')
     } catch (error) {
       return global.alert('Falha ao logar')
     }
@@ -33,6 +35,7 @@ function Login() {
         <input
           type="email"
           id="email"
+          name="email"
           placeholder="Email"
           value={ email }
           onChange={ ({ target: { value } }) => setEmail(value) }
@@ -43,6 +46,7 @@ function Login() {
         <input
           type={ showPassword }
           id="password"
+          name="password"
           placeholder="Senha"
           value={ password }
           onChange={ ({ target: { value } }) => setPassword(value) } 
@@ -52,6 +56,7 @@ function Login() {
         <input 
           type="checkbox" 
           id="reveal-password" 
+          name="reveal-password" 
           onClick={({ target: {checked }}) => handleShowPassword(checked)}
         />
         Mostrar senha 

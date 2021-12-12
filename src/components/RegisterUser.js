@@ -34,6 +34,7 @@ function RegisterUser() {
         <input
           type="text"
           id="name"
+          name="name"
           placeholder="Nome"
           value={ name }
           onChange={ ({ target: { value } }) => setName(value) }
@@ -44,6 +45,7 @@ function RegisterUser() {
         <input
           type="email"
           id="email"
+          name="email"
           placeholder="Email"
           value={ email }
           onChange={ ({ target: { value } }) => setEmail(value) }
@@ -54,16 +56,18 @@ function RegisterUser() {
         <input
           type={ showPassword }
           id="password"
+          name="password"
           placeholder="Senha"
           value={ password }
           onChange={ ({ target: { value } }) => setPassword(value) } 
         />
       </div>
       <div>
-        <label htmlFor="confirm-password">Confirmar Senha</label>
+        <label htmlFor="confirm-password">Confirmar senha</label>
         <input
           type={ showPassword }
           id="confirm-password"
+          name="confirm-password"
           placeholder="Confirmar Senha"
           value={ confirmPassword }
           onChange={ ({ target: { value } }) => setConfirmPassword(value) }
