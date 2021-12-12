@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 import EventShow from './pages/EventsShow';
@@ -6,11 +6,11 @@ import EventRegister from './pages/EventRegister';
 
 function App() {
   return (
-      <Routes>
-        <Route exact path="/events/register" component={ EventRegister } />
-        <Route exact path="/events/:id" component={ EventShow } />
-        <Route exact path="/" component={ Home } />
-      </Routes>
+      <BrowserRouter>
+        <Route path="/events/register" element={ <EventRegister /> } />
+        <Route path="/events/:id" element={  <EventShow /> } />
+        <Route path="/" element={ <Home /> } />
+      </BrowserRouter>
   );
 }
 
