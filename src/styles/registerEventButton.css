@@ -17,11 +17,33 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  color: green;
   width: 500px;
   height: 500px;
   transform: translate(-50%, -50%);
   background-color: rgba(255,255,255);
   border: 3px solid #393F47;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.login-modal form div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+}
+
+.login-modal form div input {
+  padding: 4px
 }

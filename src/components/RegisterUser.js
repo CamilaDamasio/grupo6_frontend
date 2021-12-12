@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 import { useNavigate }  from 'react-router-dom'
 
-function Login() {
+
+function RegisterUser() {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState('password');
 
   const navigate = useNavigate();
-
+  
   function handleSubmit(event) {
-    event.preventDefault()
-    try {
-      //POST API /login
-      const user = ''
-      if (user) {
+    event.preventDefault();
+    if (password === confirmPassword ) {
+      try {
+        //POST API /users
         return navigate('events/register');
+      } catch (error) {
+        return global.alert('Falha ao criar usuário')
       }
-      return global.alert('Usuário não encontrado')
-    } catch (error) {
-      return global.alert('Falha ao logar')
     }
   }
 
@@ -27,7 +28,17 @@ function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} >
+      <div>
+        <label htmlFor="name">Nome</label>
+        <input
+          type="text"
+          id="name"
+          placeholder="Nome"
+          value={ name }
+          onChange={ ({ target: { value } }) => setName(value) }
+        />
+      </div>
       <div>
         <label htmlFor="email">Email</label>
         <input
@@ -48,6 +59,16 @@ function Login() {
           onChange={ ({ target: { value } }) => setPassword(value) } 
         />
       </div>
+      <div>
+        <label htmlFor="confirm-password">Confirmar Senha</label>
+        <input
+          type={ showPassword }
+          id="confirm-password"
+          placeholder="Confirmar Senha"
+          value={ confirmPassword }
+          onChange={ ({ target: { value } }) => setConfirmPassword(value) }
+        />
+      </div>
       <label htmlFor="reveal-password"> 
         <input 
           type="checkbox" 
@@ -56,9 +77,9 @@ function Login() {
         />
         Mostrar senha 
       </label>
-      <button type="submit">Entrar</button>
+      <button type="submit">Cadastre-se</button>
     </form>
   )
 }
 
-export default Login;
+export default RegisterUser;
