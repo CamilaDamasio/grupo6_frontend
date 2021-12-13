@@ -1,28 +1,33 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
+import { api } from '../api/api'
 
+// jest.mock('api', () => ({
+//   post: jest.fn()
+// }));
 
 describe('Funcionalidade do modal', () => {
-  beforeEach(() => {
-    renderWithRouter(<App />);
-  });
+  // beforeEach(() => {
+  //   renderWithRouter(<App />);
+  // });
   
-  it('Existe o botão de cadastro de evento', () => {
-    expect(screen.getByRole('button', { name: 'Cadastre seu evento' })).toBeInTheDocument();
-  });
+  // it('Existe o botão de cadastro de evento', () => {
+  //   expect(screen.getByRole('button', { name: 'Cadastre seu evento' })).toBeInTheDocument();
+  // });
 
-  it('Ao clicar no botão, o modal é aberto', () => {
-    const openModalButton = screen.getByRole('button', { name: 'Cadastre seu evento' });
-    userEvent.click(openModalButton);
+  // it('Ao clicar no botão, o modal é aberto', () => {
+  //   const openModalButton = screen.getByRole('button', { name: 'Cadastre seu evento' });
+  //   userEvent.click(openModalButton);
 
-    expect(screen.getByRole('button', { name: 'Entrar' })).toBeInTheDocument();
-  });
+  //   expect(screen.getByRole('button', { name: 'Entrar' })).toBeInTheDocument();
+  // });
 
   describe('O modal de login possui elementos corretos', () => {
     beforeEach(() => {
+      renderWithRouter(<App />);
       const openModalButton = screen.getByRole('button', { name: 'Cadastre seu evento' });
       userEvent.click(openModalButton);
     });
@@ -46,13 +51,6 @@ describe('Funcionalidade do modal', () => {
     it('Existe o botão "Faça seu cadastro"', () => {
       expect(screen.getByRole('button', { name: 'Faça seu cadastro' })).toBeInTheDocument();
     });
-  });
-
-  describe('Verifica funcionalidades do modal de login', ()=> {
-    beforeEach(() => {
-      const openModalButton = screen.getByRole('button', { name: 'Cadastre seu evento' });
-      userEvent.click(openModalButton);
-    });
 
     it('Ao clicar em "Mostrar senha", o campo tipo password passa a ser tipo text', () => {
       expect(screen.getByLabelText('Senha')).toHaveProperty('type', 'password');
@@ -62,8 +60,46 @@ describe('Funcionalidade do modal', () => {
     });
   });
 
+  describe('Verifica funcionalidades do modal de login', ()=> {
+    it('É possível fazer login com sucesso com sucesso', async () => {
+      const expectedData = {
+        token: 'abc123',
+        user: {
+          name: 'Kevinnnnnnnnnnnnnnnnnnnn',
+          email: 'email@email.com'
+        },
+      };
+   
+      jest
+      .spyOn(api, 'post')
+      .mockImplementation(
+        jest.fn(() =>
+          Promise.resolve({ data: expectedData })
+        )
+      );
+      const { history } = renderWithRouter(<App />);
+
+      const openModalButton = screen.getByRole('button', { name: 'Cadastre seu evento' });
+      userEvent.click(openModalButton);
+
+      const emailInput = screen.getByLabelText('Email');
+      const passwordInput = screen.getByLabelText('Senha');
+      const loginButton = screen.getByRole('button', { name: 'Entrar' })
+
+      userEvent.type(emailInput, 'email@email.com');
+      userEvent.type(passwordInput, '123456');
+      userEvent.click(loginButton);
+
+      // await waitFor(() => screen.getByLabelText('página'))
+      await waitForElementToBeRemoved(emailInput)
+      const { pathname } = history.location;
+      expect(pathname).toBe('/events/register');
+    });
+  });
+
   describe('O modal de cadastro possui elementos corretos', () => {
     beforeEach(() => {
+      renderWithRouter(<App />);
       const openModalButton = screen.getByRole('button', { name: 'Cadastre seu evento' });
       userEvent.click(openModalButton);
       const createUserButton = screen.getByRole('button', { name: 'Faça seu cadastro' });
@@ -101,6 +137,7 @@ describe('Funcionalidade do modal', () => {
 
   describe('Verifica funcionalidades do modal de cadastro', ()=> {
     beforeEach(() => {
+      renderWithRouter(<App />);
       const openModalButton = screen.getByRole('button', { name: 'Cadastre seu evento' });
       userEvent.click(openModalButton);
       const createUserButton = screen.getByRole('button', { name: 'Faça seu cadastro' });

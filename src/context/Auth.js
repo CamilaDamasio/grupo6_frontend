@@ -7,6 +7,7 @@ export function AuthProvider({children}) {
   const [user, setUser] = useState(null);
 
   async function signIn(body) {
+
     try {
       const response = await api.post('login', body);
 
@@ -18,6 +19,7 @@ export function AuthProvider({children}) {
       
       setUser(user);
     } catch (error) {
+
       return error.response.data
     }
   }
