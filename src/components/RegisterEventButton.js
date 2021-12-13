@@ -19,7 +19,7 @@ function RegisterEventButton() {
   }
 
   return (
-    <main>
+    <main className='main-event-btn'>
       <button onClick={ handleClick }>Cadastre seu evento</button>
       <Modal 
         isOpen={isModalOpen}

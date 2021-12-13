@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 
 export default function EventCard({ event }) {
   return (
-    <Link to="/events/details">
+    <Link to={`/events/${event.id}`}>
       <div key={event.id} className="cardEvent">
-        <img className="imgCard" src={event.img} alt={`Imagem mostrando foto do último evento ${event.title}`} width="60%"/>
-        <h3>Evento: {event.title}</h3>
+        <img className="img-card" src={event.img} alt={`Imagem mostrando foto do último evento ${event.title}`} width="60%"/>
+        <h5 className='title-card'>Evento: {event.title}</h5>
         <br />
-        <h4>Cidade: {event.city}</h4>
-        <h4>Data: {event.date}</h4>
-        <h4>Categoria: {event.type}</h4>
+        <p>Cidade: {event.city}</p>
+        <p>Data: {event.date}</p>
+        <p>Categoria: {event.type}</p>
       </div>
     </Link>
   )

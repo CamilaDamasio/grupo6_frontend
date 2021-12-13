@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
+import Header from '../components/Header';
 
 export default function EventDetails({ event }) {
   return (
     <div key={event.id} >
+      <Header />
       <h3>Evento: {event.title}</h3>
       <br />
       <h4>Cidade: {event.city}</h4>

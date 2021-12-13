@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { RegisterEventButton, UserHeader, EventList } from '../components';
+import { RegisterEventButton, UserHeader, EventList, Header } from '../components';
 import { AuthContext } from '../context/Auth';
 
 function Home() {
@@ -8,6 +8,7 @@ function Home() {
 
   return (
     <main>
+      <Header />
       { user && <UserHeader name={user.name} onClick={ signOut } /> }
       <RegisterEventButton />
       <EventList />
