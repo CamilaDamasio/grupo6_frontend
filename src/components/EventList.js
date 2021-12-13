@@ -3,13 +3,13 @@ import EventCard from './EventCard';
 import events from '../api/mockApi';
 
 export default function EventList() {
-  
+  console.log(events);
   return (
     <div>
       {
-        events.map((city, index) => (
+        events.map((event, index) => (
           <div key={index}>
-            <EventCard key={index} city={city}/>
+            <EventCard key={index} event={event}/>
           </div>
         ))
       }

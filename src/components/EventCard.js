@@ -1,19 +1,17 @@
 import React from 'react';
-import events from '../api/mockApi';
+import { Link } from 'react-router-dom';
 
-export default function EventCard() {
+export default function EventCard({ event }) {
   return (
-    <div className="card">
-      {
-        events.map((cit, index) => (
-          <div key={index} className="cardEvent">
-            <img className="imgCard" src={cit.img} alt={`Imagem mostrando foto do último evento ${cit.title}`} />
-            <h3>Evento: {cit.title}</h3>
-            <h4>Data: {cit.date}</h4>
-            <h4>Categoria: {cit.type}</h4>
-          </div>
-        ))
-      }
-    </div>
+    <Link to="/events/details">
+      <div key={event.id} className="cardEvent">
+        <img className="imgCard" src={event.img} alt={`Imagem mostrando foto do último evento ${event.title}`} width="60%"/>
+        <h3>Evento: {event.title}</h3>
+        <br />
+        <h4>Cidade: {event.city}</h4>
+        <h4>Data: {event.date}</h4>
+        <h4>Categoria: {event.type}</h4>
+      </div>
+    </Link>
   )
 }
