@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import EventCard from './EventCard';
-import events from '../api/mockApi';
 import { api } from "../api/api"
 
 export default function EventList() {
@@ -8,12 +7,12 @@ export default function EventList() {
 
   useEffect(() => {
     async function getEvents() {
-      const response = await api.get('event');
+      const response = await api.get('/event');
       setEvents(response.data)
     }
-
     getEvents()
   }, [])
+
   return (
     <div>
       {
