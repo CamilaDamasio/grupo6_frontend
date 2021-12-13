@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate, useHistory }  from 'react-router-dom'
+import { useHistory }  from 'react-router-dom'
 import { AuthContext } from '../context/Auth';
 
 function Login() {
@@ -9,20 +9,18 @@ function Login() {
   const { signIn } = useContext(AuthContext);
 
 
-  const navigate = useNavigate();
-  // const history = useHistory();
+  const history = useHistory();
 
   async function handleSubmit(event) {
     event.preventDefault()
     try {
       const error = await signIn({ email, password });
 
-      if (error) return global.alert(JSON.stringify(error));
-      navigate('/events/register');
-      // history.push('events/register')
-      console.log('---------------------------')
+      if (error) return global.alert(error.message);
+
+      history.push('events/register');
     } catch (error) {
-      return global.alert('Falha ao logar')
+      return global.alert('Servidor indisponível')
     }
   }
 

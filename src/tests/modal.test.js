@@ -10,20 +10,22 @@ import { api } from '../api/api'
 // }));
 
 describe('Funcionalidade do modal', () => {
-  // beforeEach(() => {
-  //   renderWithRouter(<App />);
-  // });
+  describe('Verifica botão do modal', () => {
+    beforeEach(() => {
+      renderWithRouter(<App />);
+    });
+    
+    it('Existe o botão de cadastro de evento', () => {
+      expect(screen.getByRole('button', { name: 'Cadastre seu evento' })).toBeInTheDocument();
+    });
   
-  // it('Existe o botão de cadastro de evento', () => {
-  //   expect(screen.getByRole('button', { name: 'Cadastre seu evento' })).toBeInTheDocument();
-  // });
-
-  // it('Ao clicar no botão, o modal é aberto', () => {
-  //   const openModalButton = screen.getByRole('button', { name: 'Cadastre seu evento' });
-  //   userEvent.click(openModalButton);
-
-  //   expect(screen.getByRole('button', { name: 'Entrar' })).toBeInTheDocument();
-  // });
+    it('Ao clicar no botão, o modal é aberto', () => {
+      const openModalButton = screen.getByRole('button', { name: 'Cadastre seu evento' });
+      userEvent.click(openModalButton);
+  
+      expect(screen.getByRole('button', { name: 'Entrar' })).toBeInTheDocument();
+    });
+  })
 
   describe('O modal de login possui elementos corretos', () => {
     beforeEach(() => {
@@ -60,23 +62,18 @@ describe('Funcionalidade do modal', () => {
     });
   });
 
-  describe('Verifica funcionalidades do modal de login', ()=> {
+  describe('Verifica funcionalidades do modal de login', () => {
     it('É possível fazer login com sucesso com sucesso', async () => {
       const expectedData = {
         token: 'abc123',
         user: {
-          name: 'Kevinnnnnnnnnnnnnnnnnnnn',
+          name: 'Kevin',
           email: 'email@email.com'
         },
       };
    
-      jest
-      .spyOn(api, 'post')
-      .mockImplementation(
-        jest.fn(() =>
-          Promise.resolve({ data: expectedData })
-        )
-      );
+      jest.spyOn(api, 'post').mockResolvedValue({ data: expectedData });
+
       const { history } = renderWithRouter(<App />);
 
       const openModalButton = screen.getByRole('button', { name: 'Cadastre seu evento' });
@@ -90,7 +87,6 @@ describe('Funcionalidade do modal', () => {
       userEvent.type(passwordInput, '123456');
       userEvent.click(loginButton);
 
-      // await waitFor(() => screen.getByLabelText('página'))
       await waitForElementToBeRemoved(emailInput)
       const { pathname } = history.location;
       expect(pathname).toBe('/events/register');
@@ -133,22 +129,49 @@ describe('Funcionalidade do modal', () => {
     it('Existe o botão "Voltar"', () => {
       expect(screen.getByRole('button', { name: 'Voltar' })).toBeInTheDocument();
     });
-  });
-
-  describe('Verifica funcionalidades do modal de cadastro', ()=> {
-    beforeEach(() => {
-      renderWithRouter(<App />);
-      const openModalButton = screen.getByRole('button', { name: 'Cadastre seu evento' });
-      userEvent.click(openModalButton);
-      const createUserButton = screen.getByRole('button', { name: 'Faça seu cadastro' });
-      userEvent.click(createUserButton);
-    });
 
     it('Ao clicar em "Mostrar senha", o campo tipo password passa a ser tipo text', () => {
       expect(screen.getByLabelText('Senha')).toHaveProperty('type', 'password');
       const checkbox = screen.getByRole('checkbox', { name: 'Mostrar senha' });
       userEvent.click(checkbox);
       expect(screen.getByLabelText('Senha')).toHaveProperty('type', 'text');
+    });
+  });
+
+  describe('Verifica funcionalidades do modal de cadastro', () => {
+    it('É possível cadastrar usuário com sucesso', async () => {
+      const expectedData = {
+        token: 'abc123',
+        user: {
+          name: 'Kevin',
+          email: 'email@email.com'
+        },
+      };
+   
+      jest.spyOn(api, 'post').mockResolvedValue({ data: expectedData });
+
+      const { history } = renderWithRouter(<App />);
+
+      const openModalButton = screen.getByRole('button', { name: 'Cadastre seu evento' });
+      userEvent.click(openModalButton);
+      const createUserButton = screen.getByRole('button', { name: 'Faça seu cadastro' });
+      userEvent.click(createUserButton);
+
+      const nameInput = screen.getByLabelText('Nome');
+      const emailInput = screen.getByLabelText('Email');
+      const passwordInput = screen.getByLabelText('Senha');
+      const confirmPasswordInput = screen.getByLabelText('Confirmar senha');
+      const registerButton = screen.getByRole('button', { name: 'Cadastre-se' })
+
+      userEvent.type(nameInput, 'Kevin');
+      userEvent.type(emailInput, 'email@email.com');
+      userEvent.type(passwordInput, '123456');
+      userEvent.type(confirmPasswordInput, '123456');
+      userEvent.click(registerButton);
+
+      await waitForElementToBeRemoved(emailInput)
+      const { pathname } = history.location;
+      expect(pathname).toBe('/events/register');
     });
   });
 });
