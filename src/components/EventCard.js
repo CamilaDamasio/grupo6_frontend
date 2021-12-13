@@ -1,24 +1,19 @@
 import React from 'react';
-import PropType from 'prop-types';
+import events from '../api/mockApi';
 
-export default function EventCard({ city }) {
+export default function EventCard() {
   return (
-    <div>
+    <div className="card">
       {
-        city.map((cit, index) => (
-          <div key={index}>
-            <img src={cit.img} alt={cit.name}/>
-            <h2>{cit.title}</h2>
-            <h3>{cit.name}</h3>
-            <h3>{cit.date}</h3>
-            <h3>{cit.type}</h3>
+        events.map((cit, index) => (
+          <div key={index} className="cardEvent">
+            <img className="imgCard" src={cit.img} alt={`Imagem mostrando foto do último evento ${cit.title}`} />
+            <h3>Evento: {cit.title}</h3>
+            <h4>Data: {cit.date}</h4>
+            <h4>Categoria: {cit.type}</h4>
           </div>
         ))
       }
     </div>
   )
-}
-
-EventCard.propType = {
-  city: PropType.arrayOf().isRequired,
 }
