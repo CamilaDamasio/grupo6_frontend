@@ -1,13 +1,9 @@
 import React from 'react';
-import { screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
+import { screen, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 import { api } from '../api/api'
-
-// jest.mock('api', () => ({
-//   post: jest.fn()
-// }));
 
 describe('Funcionalidade do modal', () => {
   describe('Verifica botão do modal', () => {
@@ -72,7 +68,7 @@ describe('Funcionalidade do modal', () => {
         },
       };
    
-      jest.spyOn(api, 'post').mockResolvedValue({ data: expectedData });
+      jest.spyOn(api, 'post').mockResolvedValueOnce({ data: expectedData });
 
       const { history } = renderWithRouter(<App />);
 
@@ -148,7 +144,9 @@ describe('Funcionalidade do modal', () => {
         },
       };
    
-      jest.spyOn(api, 'post').mockResolvedValue({ data: expectedData });
+      jest.spyOn(api, 'post').mockResolvedValueOnce({});
+      jest.spyOn(api, 'post').mockResolvedValueOnce({ data: expectedData });
+
 
       const { history } = renderWithRouter(<App />);
 
