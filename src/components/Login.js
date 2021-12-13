@@ -37,6 +37,7 @@ function Login() {
           type="email"
           id="email"
           name="email"
+          className="inputs-login"
           placeholder="Email"
           required
           value={ email }
@@ -49,6 +50,7 @@ function Login() {
           type={ showPassword }
           id="password"
           name="password"
+          className="inputs-login"
           placeholder="Senha"
           required
           value={ password }
@@ -64,7 +66,7 @@ function Login() {
         />
         Mostrar senha 
       </label>
-      <button type="submit">Entrar</button>
+      <button type="submit" className="submit-button">Entrar</button>
     </form>
   )
 }
