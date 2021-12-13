@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate }  from 'react-router-dom'
-import api from '../api/api'
+import { AuthContext } from '../context/Auth';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState('password');
+  const { signIn } = useContext(AuthContext);
+
 
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
     event.preventDefault()
     try {
-      // const token = await api.post('/login', { email, password });
-      const token = 'aaaa';
-      if (token) {
-        localStorage.setItem('hackaton:token', token);
-        navigate('events/register');
-      }
-      // return global.alert('Usuário não encontrado')
+      const error = await signIn({ email, password });
+
+      if (error) return global.alert(JSON.stringify(error));
+
+      navigate('events/register');
     } catch (error) {
       return global.alert('Falha ao logar')
     }
@@ -37,6 +37,7 @@ function Login() {
           id="email"
           name="email"
           placeholder="Email"
+          required
           value={ email }
           onChange={ ({ target: { value } }) => setEmail(value) }
         />
@@ -48,6 +49,7 @@ function Login() {
           id="password"
           name="password"
           placeholder="Senha"
+          required
           value={ password }
           onChange={ ({ target: { value } }) => setPassword(value) } 
         />
