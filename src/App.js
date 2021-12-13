@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={ <Home /> } />
           <Route path="events/:id" element={ <EventDetails /> } />
-          <Route path="events/register" element={ <PrivateRoute><EventsRegister /></PrivateRoute> } />
+          <Route path="events/register" element={ <EventsRegister /> } />
       </Routes>
     </AuthProvider>
   );
