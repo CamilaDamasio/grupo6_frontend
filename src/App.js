@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 import EventDetails from './pages/EventDetails';
@@ -9,11 +9,11 @@ import PrivateRoute from './components/PrivateRoute';
 function App() {
   return (
     <AuthProvider>
-      <Routes>
-        <Route path="/" element={ <Home /> } />
-          <Route path="events/:id" element={ <EventDetails /> } />
-          <Route path="events/register" element={ <PrivateRoute><EventsRegister /></PrivateRoute> } />
-      </Routes>
+      <Switch>
+        <Route exact path="/" component={ Home } />
+        <Route exact path="/events/register" component={ EventsRegister } />
+        <Route exact path="/events/:id" component={ EventDetails } />
+      </Switch>
     </AuthProvider>
   );
 }

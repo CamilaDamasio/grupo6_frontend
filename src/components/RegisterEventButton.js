@@ -3,17 +3,17 @@ import Modal from 'react-modal';
 import '../styles/registerEventButton.css';
 import Login from './Login'
 import RegisterUser from './RegisterUser'
-import { useNavigate }  from 'react-router-dom'
+import { useHistory }  from 'react-router-dom'
 import { AuthContext } from '../context/Auth';
 
 function RegisterEventButton() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [login, setLogin] = useState(true);
-  const navigate = useNavigate();
+  const history = useHistory();
   const { user } = useContext(AuthContext);
 
   function handleClick() {
-    if(user) return navigate('events/register');
+    if(user) return history.push('/events/register');
 
     setIsModalOpen(true)
   }
