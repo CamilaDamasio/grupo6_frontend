@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate }  from 'react-router-dom'
+import { useHistory }  from 'react-router-dom'
 import { AuthContext } from '../context/Auth';
 
 
@@ -11,7 +11,7 @@ function RegisterUser() {
   const [showPassword, setShowPassword] = useState('password');
   const { createUser } = useContext(AuthContext);
 
-  const navigate = useNavigate();
+  const history = useHistory();
   
   async function handleSubmit(event) {
     event.preventDefault();
@@ -26,11 +26,11 @@ function RegisterUser() {
     try {
       const error = await createUser({ name, email, password });
     
-      if (error) return global.alert(JSON.stringify(error));
+      if (error) return global.alert(error.message);
       
-      return navigate('events/register');
+      history.push('events/register');
     } catch (error) {
-      return global.alert('Falha ao criar usuário')
+      return global.alert('Servidor indisponível');
     }
   }
 
