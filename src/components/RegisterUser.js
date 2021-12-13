@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate }  from 'react-router-dom'
+import { AuthContext } from '../context/Auth';
 
 
 function RegisterUser() {
@@ -8,18 +9,28 @@ function RegisterUser() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState('password');
+  const { createUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
   
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    if (password === confirmPassword ) {
-      try {
-        //POST API /users
-        return navigate('events/register');
-      } catch (error) {
-        return global.alert('Falha ao criar usuário')
-      }
+    const patternEmail = /^[\w.]+@[a-z]+\.\w{2,3}$/g.test(email);
+
+    if (!patternEmail) return global.alert('Email inválido');
+
+    if (password !== confirmPassword ) return global.alert('As senhas não combinam');
+
+    if (password.length < 6 ) return global.alert('A senha deve ter pelo menos 6 caracteres');
+
+    try {
+      const error = await createUser({ name, email, password });
+    
+      if (error) return global.alert(JSON.stringify(error));
+      
+      return navigate('events/register');
+    } catch (error) {
+      return global.alert('Falha ao criar usuário')
     }
   }
 
@@ -36,6 +47,7 @@ function RegisterUser() {
           id="name"
           name="name"
           placeholder="Nome"
+          required
           value={ name }
           onChange={ ({ target: { value } }) => setName(value) }
         />
@@ -47,6 +59,7 @@ function RegisterUser() {
           id="email"
           name="email"
           placeholder="Email"
+          required
           value={ email }
           onChange={ ({ target: { value } }) => setEmail(value) }
         />
@@ -58,6 +71,7 @@ function RegisterUser() {
           id="password"
           name="password"
           placeholder="Senha"
+          required
           value={ password }
           onChange={ ({ target: { value } }) => setPassword(value) } 
         />
@@ -69,6 +83,7 @@ function RegisterUser() {
           id="confirm-password"
           name="confirm-password"
           placeholder="Confirmar Senha"
+          required
           value={ confirmPassword }
           onChange={ ({ target: { value } }) => setConfirmPassword(value) }
         />
