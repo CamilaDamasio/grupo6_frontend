@@ -35,6 +35,7 @@ function RegisterUser() {
           type="text"
           id="name"
           name="name"
+          className='inputs-login'
           placeholder="Nome"
           value={ name }
           onChange={ ({ target: { value } }) => setName(value) }
@@ -46,6 +47,7 @@ function RegisterUser() {
           type="email"
           id="email"
           name="email"
+          className='inputs-login'
           placeholder="Email"
           value={ email }
           onChange={ ({ target: { value } }) => setEmail(value) }
@@ -57,6 +59,7 @@ function RegisterUser() {
           type={ showPassword }
           id="password"
           name="password"
+          className='inputs-login'
           placeholder="Senha"
           value={ password }
           onChange={ ({ target: { value } }) => setPassword(value) } 
@@ -68,6 +71,7 @@ function RegisterUser() {
           type={ showPassword }
           id="confirm-password"
           name="confirm-password"
+          className='inputs-login'
           placeholder="Confirmar Senha"
           value={ confirmPassword }
           onChange={ ({ target: { value } }) => setConfirmPassword(value) }
@@ -81,7 +85,7 @@ function RegisterUser() {
         />
         Mostrar senha 
       </label>
-      <button type="submit">Cadastre-se</button>
+      <button className='submit-button' type="submit">Cadastre-se</button>
     </form>
   )
 }

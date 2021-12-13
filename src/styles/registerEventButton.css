@@ -20,8 +20,8 @@
   width: 500px;
   height: 500px;
   transform: translate(-50%, -50%);
-  background-color: rgba(255,255,255);
-  border: 3px solid #393F47;
+  background-color: rgb(230, 230, 230);
+  border: 3px solid #270854;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -46,4 +46,23 @@
 
 .login-modal form div input {
   padding: 4px
+}
+
+.inputs-login {
+  border: 4px solid !important;
+  border-image: linear-gradient(135deg, #14D498 0%,#5410BC 100%) 1 !important;
+}
+
+.submit-button {
+  width: 20vw;
+  height: 5vh;
+  background-image: linear-gradient(135deg,#14D498,#5410BC);
+  border: none;
+  color:rgb(230, 230, 230);
+  font-size: 3vh;
+}
+
+.register-btn {
+  background-color: #1A8E6B;
+  height: 7vh;
 }

@@ -36,6 +36,7 @@ function Login() {
           type="email"
           id="email"
           name="email"
+          className="inputs-login"
           placeholder="Email"
           value={ email }
           onChange={ ({ target: { value } }) => setEmail(value) }
@@ -47,6 +48,7 @@ function Login() {
           type={ showPassword }
           id="password"
           name="password"
+          className="inputs-login"
           placeholder="Senha"
           value={ password }
           onChange={ ({ target: { value } }) => setPassword(value) } 
@@ -61,7 +63,7 @@ function Login() {
         />
         Mostrar senha 
       </label>
-      <button type="submit">Entrar</button>
+      <button type="submit" className="submit-button">Entrar</button>
     </form>
   )
 }

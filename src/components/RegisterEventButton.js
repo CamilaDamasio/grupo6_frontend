@@ -20,7 +20,7 @@ function RegisterEventButton() {
       >
         { login && <Login /> }
         { !login && <RegisterUser /> }
-        <button onClick={() => setLogin(!login)}>
+        <button className='register-btn' onClick={() => setLogin(!login)}>
           { login ? 'Faça seu cadastro' : 'Voltar' }
         </button>
       </Modal>
