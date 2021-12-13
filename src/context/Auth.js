@@ -22,12 +22,21 @@ export function AuthProvider({children}) {
     }
   }
 
-  async function createUser(user) {
+  async function createUser(userFields) {
     try {
-      const response = await api.post('user', user);
+      await api.post('user', userFields);
 
-      const { name, email } = response.data;
-      setUser({ name, email })
+      const { email, password } = userFields
+
+      const response = await api.post('login', { email, password });
+      
+      const { token, user } = response.data;
+
+      localStorage.setItem('@hackaton', token);
+      
+      api.defaults.headers.common.authorization = token;
+      
+      setUser(user);
     } catch (error) {
       return error.response.data
     }
