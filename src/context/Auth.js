@@ -5,15 +5,6 @@ export const AuthContext = createContext({});
 
 export function AuthProvider({children}) {
   const [user, setUser] = useState(null);
-  const [event, setEvent] = useState([{
-    img: '',
-    title: '',
-    description: '',
-    date: '',
-    city: '',
-    type: '',
-    protocolPandemic:'',
-  }])
 
   async function signIn(body) {
 
@@ -53,6 +44,10 @@ export function AuthProvider({children}) {
     }
   }
 
+  async function createEvent() {
+
+  }
+
   function signOut() {
     setUser(null);
     localStorage.removeItem('@hackaton');
@@ -77,7 +72,7 @@ export function AuthProvider({children}) {
   }, []);
 
   return(
-    <AuthContext.Provider value={{ signIn, signOut, user, createUser, event, setEvent }}>
+    <AuthContext.Provider value={{ signIn, signOut, user, createUser, createEvent }}>
       {children}
     </AuthContext.Provider>
   )

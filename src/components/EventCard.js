@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function EventCard({ event }) {
-  console.log(event)
+
   return (
     <Link to={`/events/${event._id}`}>
       <div key={event._id} className="cardEvent">

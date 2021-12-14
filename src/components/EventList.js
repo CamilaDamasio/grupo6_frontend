@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import EventCard from './EventCard';
 import '../styles/eventList.css';
 import { api } from "../api/api"
+import '../styles/eventList.css';
 
 export default function EventList() {
   const [events, setEvents] = useState([]);
