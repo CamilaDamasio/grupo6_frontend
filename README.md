@@ -18,10 +18,10 @@ Aplicação desenvolvida para interagir com o usuário através da API NaLista A
 
 ### Informações técnicas
 
-- Aplicação desenvolvida em React.js (create-react-app)
-- O gerenciamento de estado usando ContextAPI
-- Elementos componentizados para melhor aproveitamento
-- Requisições utilizando Axios
+- Aplicação desenvolvida em React.js (create-react-app).
+- O gerenciamento de estado usando ContextAPI e React Hooks.
+- Elementos html componentizados com JSX.
+- Requisições utilizando Axios.
 
 ### Rodar localmente
 
