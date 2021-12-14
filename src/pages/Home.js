@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-
 import { RegisterEventButton, UserHeader, EventList, Header } from '../components';
 import { AuthContext } from '../context/Auth';
 
