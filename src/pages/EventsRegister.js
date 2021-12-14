@@ -1,11 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory }  from 'react-router-dom'
 import { Header } from '../components';
-import { AuthContext } from '../context/Auth';
 import { api } from "../api/api"
 
 function EventsRegister() {
-  const { createEvent } = useContext(AuthContext);
   const [monetize, setMonetize] = useState('');
   const [img, setImg] = useState('');
   const [title, setTitle] = useState('');
@@ -27,12 +25,11 @@ function EventsRegister() {
     if (!monetize) return global.alert('Informe se é um evento público ou pago');
 
     try {
-      const error = await api.post('event', { img, title, description, date, city, type, protocolPandemic });
+      await api.post('event', { img, title, description, date, city, type, protocolPandemic });
     
-      if (error) return global.alert(JSON.stringify(error));
-      
       return history.push('/');
     } catch (error) {
+      console.log(error.response.data.message)
       return global.alert('Falha ao criar evento')
     }
   }
