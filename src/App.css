@@ -21,8 +21,8 @@
   font-family: 'Norican', cursive !important;
   text-align: center;
   margin: 0;
-  width: 65vw;
-  justify-content: flex-end;
+  width: 100vw;
+  justify-content: center;
   color: #1d1c1c;
 }
 
