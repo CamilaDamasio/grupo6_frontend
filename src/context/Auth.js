@@ -44,6 +44,10 @@ export function AuthProvider({children}) {
     }
   }
 
+  async function createEvent() {
+
+  }
+
   function signOut() {
     setUser(null);
     localStorage.removeItem('@hackaton');
@@ -68,7 +72,7 @@ export function AuthProvider({children}) {
   }, []);
 
   return(
-    <AuthContext.Provider value={{ signIn, signOut, user, createUser }}>
+    <AuthContext.Provider value={{ signIn, signOut, user, createUser, createEvent }}>
       {children}
     </AuthContext.Provider>
   )
