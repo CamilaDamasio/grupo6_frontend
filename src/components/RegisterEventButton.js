@@ -20,7 +20,7 @@ function RegisterEventButton() {
 
   return (
     <main className='main-event-btn'>
-      <button onClick={ handleClick }>Cadastre seu evento</button>
+      <button className='btn-event' onClick={ handleClick }>Cadastre seu evento</button>
       <Modal 
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}

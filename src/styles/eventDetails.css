@@ -1,0 +1,27 @@
+.details-page {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-between;
+  background-color: rgb(221, 221, 221);
+}
+
+.imgCard {
+  border-radius: 7px;
+  margin: 8px;
+  height: 150px;
+  width: 100vw;
+}
+
+.detail-title {
+  margin: 0;
+  font-size: 5vw;
+}
+
+.imgDescr, .imgProt {
+  text-align: justify;
+  padding: 15px;
+}

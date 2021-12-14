@@ -1,0 +1,44 @@
+.register-event {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 93vh;
+  justify-content: space-evenly;
+  background-color: white;
+  background-image: url('../images/colagem_minas.png');
+}
+
+.title-page-register {
+  text-align: center;
+  color: aliceblue;
+}
+
+.input-register {
+  width: 70vw;
+  height: 5vh;
+}
+
+.radios-div {
+  color: aliceblue;
+}
+
+.protocolo-input {
+  width: 70vw;
+  height: 10vh;
+}
+
+.submit-btn {
+  height: 5vh;
+  width: 100vw;
+  background-image: linear-gradient(135deg,#14D498,#5410BC);
+}
+
+.input-register {
+  display: flex;
+}
+
+.label-name {
+  color: aliceblue;
+  text-align: center;
+}
+ 

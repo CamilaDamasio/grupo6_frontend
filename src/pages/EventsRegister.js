@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory }  from 'react-router-dom'
-import { Header } from '../components';
 import { api } from "../api/api"
+import '../styles/eventsRegister.css';
 
 function EventsRegister() {
   const [monetize, setMonetize] = useState('');
@@ -36,31 +36,43 @@ function EventsRegister() {
   
   return (
     <main>
-      <Header />
-      <form>
-        <input type="text" value={ title } placeholder="Digite o nome do Evento"  onChange={ ({ target: { value } }) => setTitle(value)} />
-        <input type="text" value={ img } placeholder="Insira um caminho url da imagem do evento"  onChange={ ({ target: { value } }) => setImg(value)} />
-        <input value={ city } placeholder="Digite a cidade" onChange={ ({ target: { value } }) => setCity(value)}/>
-        <input value={ date } placeholder="Digite a data do Evento" onChange={ ({ target: { value } }) => setDate(value)}/>
-        <input value={ description } placeholder="Digite a descrição do Evento" onChange={ ({ target: { value } }) => setDescription(value)}/>
-        <input type="text" value={ type } placeholder="Digite a categoria do Evento"  onChange={ ({ target: { value } }) => setType(value)} />
-        <div>
+      <form className='register-event'>
+        <h1 className='title-page-register'>Cadastre seu evento abaixo:</h1>
+        <label className='label-name' for="title">Digite o nome do Evento:
+          <input className='input-register' type="text" value={ title } placeholder="Digite o nome do Evento"  onChange={ ({ target: { value } }) => setTitle(value)} />
+        </label>
+        <label className='label-name' for="img">Insira a url da imagem:
+          <input className='input-register' type="text" value={ img } placeholder="Insira um caminho url da imagem do evento"  onChange={ ({ target: { value } }) => setImg(value)} />
+        </label>
+        <label className='label-name' for="city">Digite a cidade:
+          <input className='input-register' value={ city } placeholder="Digite a cidade" onChange={ ({ target: { value } }) => setCity(value)}/>
+        </label>
+        <label className='label-name' for="date">Digite a data do Evento:
+          <input className='input-register' value={ date } placeholder="Digite a data do Evento" onChange={ ({ target: { value } }) => setDate(value)}/>
+        </label>
+        <label className='label-name' for="description">Digite a descrição do Evento:
+          <input className='input-register' value={ description } placeholder="Digite a descrição do Evento" onChange={ ({ target: { value } }) => setDescription(value)}/>
+        </label>
+        <label className='label-name' for="type">Digite a categoria do Evento:
+          <input className='input-register' type="text" value={ type } placeholder="Digite a categoria do Evento"  onChange={ ({ target: { value } }) => setType(value)} />
+        </label>
+        <div className='radios-div'>
           <label>Pago: {' '}
             <input type="radio" name="monetize" value="Pago" onChange={ ({ target: { value } }) => setMonetize(value)} />
             {' '}
-          </label>
-          <label>Gratuito: {' '}
-            <input type="radio" name="monetize" value="Gratuito" onChange={ ({ target: { value } }) => setMonetize(value)} />
+          </label><label>Gratuito: {' '}
+            <input type="radio" name="monetize" value="Pago" onChange={ ({ target: { value } }) => setMonetize(value)} />
             {' '}
           </label>
         </div>
         <input
+        className='protocolo-input'
           value ={protocolPandemic}
-          placeholder="Digite qual protocolo de enfrentamento ao covid-19 o Evento adotará"
+          placeholder="Protocolo de enfrentamento ao covid-19"
           onChange={ ({ target: { value } }) => setProtocolPandemic(value)}
         />
       </form>
-      <button type="submit" onClick={ handleClick }>Cadastrar</button>
+      <button className='submit-btn' type="submit" onClick={ handleClick }>Cadastrar</button>
     </main>
   )
 }
