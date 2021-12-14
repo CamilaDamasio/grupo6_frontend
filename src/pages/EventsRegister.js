@@ -40,30 +40,46 @@ function EventsRegister() {
   return (
     <main>
       <Header />
-      <form>
-        <input type="text" value={ title } placeholder="Digite o nome do Evento"  onChange={ ({ target: { value } }) => setTitle(value)} />
-        <input type="text" value={ img } placeholder="Insira um caminho url da imagem do evento"  onChange={ ({ target: { value } }) => setImg(value)} />
-        <input value={ city } placeholder="Digite a cidade" onChange={ ({ target: { value } }) => setCity(value)}/>
-        <input value={ date } placeholder="Digite a data do Evento" onChange={ ({ target: { value } }) => setDate(value)}/>
-        <input value={ description } placeholder="Digite a descrição do Evento" onChange={ ({ target: { value } }) => setDescription(value)}/>
-        <input type="text" value={ type } placeholder="Digite a categoria do Evento"  onChange={ ({ target: { value } }) => setType(value)} />
-        <div>
-          <label>Pago: {' '}
-            <input type="radio" name="monetize" value="Pago" onChange={ ({ target: { value } }) => setMonetize(value)} />
-            {' '}
+      <div>
+        <form>
+          <label for="title">Digite o nome do Evento:
+            <input type="text" value={ title } placeholder="Digite o nome do Evento"  onChange={ ({ target: { value } }) => setTitle(value)} />
           </label>
-          <label>Gratuito: {' '}
-            <input type="radio" name="monetize" value="Gratuito" onChange={ ({ target: { value } }) => setMonetize(value)} />
-            {' '}
+          <label for="img">Insira um caminho url da imagem do evento:
+            <input type="text" value={ img } placeholder="Insira um caminho url da imagem do evento"  onChange={ ({ target: { value } }) => setImg(value)} />
           </label>
-        </div>
-        <input
-          value ={protocolPandemic}
-          placeholder="Digite qual protocolo de enfrentamento ao covid-19 o Evento adotará"
-          onChange={ ({ target: { value } }) => setProtocolPandemic(value)}
-        />
-      </form>
-      <button type="submit" onClick={ handleClick }>Cadastrar</button>
+          <label for="city">Digite a cidade:
+            <input value={ city } placeholder="Digite a cidade" onChange={ ({ target: { value } }) => setCity(value)}/>
+          </label>
+          <label for="date">Digite a data do Evento:
+            <input value={ date } placeholder="Digite a data do Evento" onChange={ ({ target: { value } }) => setDate(value)}/>
+          </label>
+          <label for="description">Digite a descrição do Evento:
+            <input value={ description } placeholder="Digite a descrição do Evento" onChange={ ({ target: { value } }) => setDescription(value)}/>
+          </label>
+          <label for="type">Digite a categoria do Evento:
+            <input type="text" value={ type } placeholder="Digite a categoria do Evento"  onChange={ ({ target: { value } }) => setType(value)} />
+          </label>
+          <div>
+            <label>Pago: {' '}
+              <input type="radio" name="monetize" value="Pago" onChange={ ({ target: { value } }) => setMonetize(value)} />
+              {' '}
+            </label>
+            <label>Gratuito: {' '}
+              <input type="radio" name="monetize" value="Gratuito" onChange={ ({ target: { value } }) => setMonetize(value)} />
+              {' '}
+            </label>
+          </div>
+          <label for="protocolPandemic">Digite qual protocolo de enfrentamento ao covid-19 o Evento adotará:
+            <input
+              value ={protocolPandemic}
+              placeholder="Digite qual protocolo de enfrentamento ao covid-19 o Evento adotará"
+              onChange={ ({ target: { value } }) => setProtocolPandemic(value)}
+            />
+          </label>
+          </form>
+        <button type="submit" onClick={ handleClick }>Cadastrar</button>
+      </div>
     </main>
   )
 }
