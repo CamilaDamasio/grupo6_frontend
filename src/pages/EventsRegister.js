@@ -5,9 +5,15 @@ import { AuthContext } from '../context/Auth';
 
 
 function EventsRegister() {
-  const { event, setEvent, createEvent } = useContext(AuthContext);
-  const { img, title, description, date, city, type, protocolPandemic } = event;
+  const { createEvent } = useContext(AuthContext);
   const [monetize, setMonetize] = useState('');
+  const [img, setImg] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [date, setDate] = useState('');
+  const [city, setCity] = useState('');
+  const [type, setType] = useState('');
+  const [protocolPandemic, setProtocolPandemic] = useState('');
   
   const navigate = useNavigate();
   
@@ -35,12 +41,12 @@ function EventsRegister() {
     <main>
       <Header />
       <form>
-        <input type="text" value={ title } placeholder="Digite o nome do Evento"  onChange={ ({ target: { value } }) => setEvent(value)} />
-        <input type="text" value={ img } placeholder="Insira um caminho url da imagem do evento"  onChange={ ({ target: { value } }) => setEvent(value)} />
-        <input value={ city } placeholder="Digite a cidade" onChange={ ({ target: { value } }) => setEvent(value)}/>
-        <input value={ date } placeholder="Digite a data do Evento" onChange={ ({ target: { value } }) => setEvent(value)}/>
-        <input value={ description } placeholder="Digite a descrição do Evento" onChange={ ({ target: { value } }) => setEvent(value)}/>
-        <input type="text" value={ type } placeholder="Digite a categoria do Evento"  onChange={ ({ target: { value } }) => setEvent(value)} />
+        <input type="text" value={ title } placeholder="Digite o nome do Evento"  onChange={ ({ target: { value } }) => setTitle(value)} />
+        <input type="text" value={ img } placeholder="Insira um caminho url da imagem do evento"  onChange={ ({ target: { value } }) => setImg(value)} />
+        <input value={ city } placeholder="Digite a cidade" onChange={ ({ target: { value } }) => setCity(value)}/>
+        <input value={ date } placeholder="Digite a data do Evento" onChange={ ({ target: { value } }) => setDate(value)}/>
+        <input value={ description } placeholder="Digite a descrição do Evento" onChange={ ({ target: { value } }) => setDescription(value)}/>
+        <input type="text" value={ type } placeholder="Digite a categoria do Evento"  onChange={ ({ target: { value } }) => setType(value)} />
         <div>
           <label>Pago: {' '}
             <input type="radio" name="monetize" value="Pago" onChange={ ({ target: { value } }) => setMonetize(value)} />
@@ -54,7 +60,7 @@ function EventsRegister() {
         <input
           value ={protocolPandemic}
           placeholder="Digite qual protocolo de enfrentamento ao covid-19 o Evento adotará"
-          onChange={ ({ target: { value } }) => setEvent(value)}
+          onChange={ ({ target: { value } }) => setProtocolPandemic(value)}
         />
       </form>
       <button type="submit" onClick={ handleClick }>Cadastrar</button>
