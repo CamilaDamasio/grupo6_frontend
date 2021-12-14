@@ -28,7 +28,7 @@ Aplicação desenvolvida para interagir com o usuário através da API NaLista A
 - ATENÇÃO - 
 Certifique-se que possui o a API back-end desta aplicação clonada e rodando na porta 3001.
 - Econtre aqui: https://github.com/portelajr/grupo6-backend
--
+
 - Clone este repositório
 - instale as dependencias (script: npm install)
 - rode o projeto na porta 3000 (script: npm start)
