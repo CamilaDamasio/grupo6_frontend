@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import EventCard from './EventCard';
 import { api } from "../api/api"
+import '../styles/eventList.css';
 
 export default function EventList() {
   const [events, setEvents] = useState([]);
@@ -14,12 +15,10 @@ export default function EventList() {
   }, [])
 
   return (
-    <div>
+    <div className="cards-list">
       {
         events.map((event, index) => (
-          <div key={index}>
             <EventCard key={index} event={event}/>
-          </div>
         ))
       }
     </div>
