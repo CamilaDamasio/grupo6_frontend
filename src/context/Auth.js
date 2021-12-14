@@ -5,6 +5,15 @@ export const AuthContext = createContext({});
 
 export function AuthProvider({children}) {
   const [user, setUser] = useState(null);
+  const [event, setEvent] = useState([{
+    img: '',
+    title: '',
+    description: '',
+    date: '',
+    city: '',
+    type: '',
+    protocolPandemic:'',
+  }])
 
   async function signIn(body) {
 
@@ -68,7 +77,7 @@ export function AuthProvider({children}) {
   }, []);
 
   return(
-    <AuthContext.Provider value={{ signIn, signOut, user, createUser }}>
+    <AuthContext.Provider value={{ signIn, signOut, user, createUser, event, setEvent }}>
       {children}
     </AuthContext.Provider>
   )

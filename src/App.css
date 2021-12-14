@@ -23,9 +23,11 @@
   margin: 0;
   width: 65vw;
   justify-content: flex-end;
+  color: #1d1c1c;
 }
 
 .subtitle {
+  color: #270854;
   display: flex;
   font-size: 3vh;
   text-align: center;
