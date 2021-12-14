@@ -43,22 +43,22 @@ function EventsRegister() {
       <div>
         <form>
           <label for="title">Digite o nome do Evento:
-            <input type="text" value={ title } placeholder="Digite o nome do Evento"  onChange={ ({ target: { value } }) => setTitle(value)} />
+            <input type="text" value={ title } onChange={ ({ target: { value } }) => setTitle(value)} />
           </label>
           <label for="img">Insira um caminho url da imagem do evento:
-            <input type="text" value={ img } placeholder="Insira um caminho url da imagem do evento"  onChange={ ({ target: { value } }) => setImg(value)} />
+            <input type="text" value={ img } onChange={ ({ target: { value } }) => setImg(value)} />
           </label>
           <label for="city">Digite a cidade:
-            <input value={ city } placeholder="Digite a cidade" onChange={ ({ target: { value } }) => setCity(value)}/>
+            <input value={ city } onChange={ ({ target: { value } }) => setCity(value)}/>
           </label>
           <label for="date">Digite a data do Evento:
-            <input value={ date } placeholder="Digite a data do Evento" onChange={ ({ target: { value } }) => setDate(value)}/>
+            <input value={ date } onChange={ ({ target: { value } }) => setDate(value)}/>
           </label>
           <label for="description">Digite a descrição do Evento:
-            <input value={ description } placeholder="Digite a descrição do Evento" onChange={ ({ target: { value } }) => setDescription(value)}/>
+            <input value={ description } onChange={ ({ target: { value } }) => setDescription(value)}/>
           </label>
           <label for="type">Digite a categoria do Evento:
-            <input type="text" value={ type } placeholder="Digite a categoria do Evento"  onChange={ ({ target: { value } }) => setType(value)} />
+            <input type="text" value={ type } onChange={ ({ target: { value } }) => setType(value)} />
           </label>
           <div>
             <label>Pago: {' '}
@@ -72,8 +72,8 @@ function EventsRegister() {
           </div>
           <label for="protocolPandemic">Digite qual protocolo de enfrentamento ao covid-19 o Evento adotará:
             <input
+              type="text"
               value ={protocolPandemic}
-              placeholder="Digite qual protocolo de enfrentamento ao covid-19 o Evento adotará"
               onChange={ ({ target: { value } }) => setProtocolPandemic(value)}
             />
           </label>
