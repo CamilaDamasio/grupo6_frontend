@@ -2,7 +2,7 @@
 
 ## Repositório Front-end
 
-API desenvolvida durante o hackaton interturmas da escola técnica Trybe
+API desenvolvida durante o hackathon interturmas da escola de formação técnica Trybe
 De 11/12 a 13/12 de 2021.
 
 ### Sobre a aplicação
